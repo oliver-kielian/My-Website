@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    Contact
+{% endblock %} 
+{% block content %}
+    <div class="contactForm">
+        <form method="POST" action="/contact">
+            Name: <input type="text" name="name" required>
+            Subject: <input type="text" name="subject" required>
+            Email: <input type="text" name="email" required>
+            Message: <input type="textarea" name="message" required>
+            <input type="submit" value="SEND">
+        </form>
+    </div>
+{% endblock %}
