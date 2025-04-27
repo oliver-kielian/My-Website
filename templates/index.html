@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Claw Machine Game</title>
+  <link rel="modulepreload" href="{{ url_for('static', filename='game/claw_machine_game-e86b0be584484a63.js') }}" crossorigin="anonymous">
+  <link rel="preload" href="{{ url_for('static', filename='game/claw_machine_game-e86b0be584484a63_bg.wasm') }}" as="fetch" type="application/wasm" crossorigin="anonymous">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    #loading {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    #progress-bar-container {
+      width: 80%;
+      height: 20px;
+      background-color: #444;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #76d7c4;
+      transition: width 0.1s ease-in-out;
+    }
+
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">Loading game... please wait!</div>
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <script type="module">
+    import init from '/static/game/claw_machine_game-e86b0be584484a63.js';
+
+    // Function to simulate progress updates
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      if (progress < 80) {  // Set to 80% max (since the game will load soon)
+        progress += 2;
+        document.getElementById('progress-bar').style.width = progress + '%';
+      }
+    }, 100); // Update progress every 100ms
+
+    // Load the game and update progress
+    init().then(() => {
+      // Stop the progress bar when the game is ready
+      clearInterval(progressInterval);
+      document.getElementById('loading').style.display = 'none';
+      document.querySelector('canvas').style.display = 'block';
+      document.getElementById('progress-bar').style.width = '100%'; // Final progress
+    }).catch((err) => {
+      console.error("Error loading game:", err);
+    });
+  </script>
+
+  <!-- Optional: Advanced JS for further WASM handling -->
+  <script type="module">
+    import init, * as bindings from '/static/game/claw_machine_game-e86b0be584484a63.js';
+    const wasm = await init({ module_or_path: '/static/game/claw_machine_game-e86b0be584484a63_bg.wasm' });
+    window.wasmBindings = bindings;
+    dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+  </script>
+</body>
+</html>
