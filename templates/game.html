@@ -3,7 +3,7 @@
     Games
 {% endblock %} 
 {% block content %}
-<h1 class="disclaimer">DISCLAIMER: I am currently trying to get these games up so you are able to play them from your browser. While I am working on that, check out the screenshots I've attached</h1>
+<h3 class="disclaimer">DISCLAIMER: I am currently trying to get these games up so you are able to play them from your browser. While I am working on that, check out the screenshots I've attached</h3>
     <div class="games">
         <div class="game">
             <p>Bevy</p>
@@ -12,8 +12,10 @@
         </div>
         <div class="game">
             <p>Gamemaker</p>
-            <p>Coming Soon!</p>
-            <a href="https://github.com/oliver-kielian/claw_machine_game">Repository</a>
+            <p>Play Link Coming Soon!</p>
+            <img src="{{ url_for('static', filename='game/gamemaker/class_screen.png') }}" alt="Class Selection">
+            <img src="{{ url_for('static', filename='game/gamemaker/nav_screen.png') }}" alt="World Navigation">
+            <img src="{{ url_for('static', filename='game/gamemaker/combat_screen.png') }}" alt="Combat">
         </div>
     </div>
 {% endblock %}
