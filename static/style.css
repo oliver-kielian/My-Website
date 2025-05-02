@@ -1,18 +1,20 @@
-/* Global Styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 10px;
+    padding: 10px;
+    background-color: #FFFDF6;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
+    margin: 10px;
+    padding: 10px;
 }
 
-/* Page Layout */
-.artwork {
+.artwork, .games {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
@@ -21,10 +23,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
 }
 
-/* Individual Art Block */
-.art {
-    background-color: white;
-    border: 1px solid #ddd;
+.art, .game {
+    background-color: #FAF6E9;
+    border: 1px solid #A0C878;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
@@ -32,100 +33,108 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.art:hover {
+.art:hover, .game:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Image Styling */
 .art img {
     width: 100%;
     height: auto;
     border-bottom: 1px solid #ddd;
 }
 
-/* Description Text */
-.art p {
+
+.art p, .game p {
     padding: 15px;
     font-size: 16px;
     color: #555;
     line-height: 1.5;
 }
 
-.art p:hover {
+.art p:hover, .game p:hover {
     color: #333;
 }
 
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    .artwork {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    }
-}
-
-/* Basic reset to remove default margins and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Navbar container */
 nav {
-    background-color: #333; /* Dark background for navbar */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-/* Logo or brand name styling */
-nav .brand {
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Navbar links container */
-nav .nav-links {
-    display: flex; /* Use flexbox to make the links inline */
-}
-
-/* Styling for each link in the navbar */
-nav .nav-links li {
-    margin-left: 20px; /* Add space between each link */
-}
-
-/* Remove bullet points and list styling */
-nav .nav-links li {
-    list-style: none;
-}
-
-/* Styling for links */
-nav .nav-links a {
+    width: 80%;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    border: 3px dashed #A0C878; 
+    border-radius: 30px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  li {
+    display: inline-block;
+    margin: 0 20px;
+  }
+  
+  a {
     text-decoration: none;
+    color: #A0C878;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  a:hover {
+    color: #DDEB9D;
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  form {
+    background-color: #FAF6E9;
+    border: 3px dashed #A0C878;
+    border-radius: 30px;
+    padding: 25px;
+    width: 80%;
+    max-width: 550px;
+    margin: 30px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: bounce 2s infinite alternate;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  input, select, textarea {
+    padding: 12px;
+    border-radius: 20px;
+    border: 3px dotted #A0C878;
+    font-family: 'Bubblegum Sans', sans-serif;
+    font-size: 18px;
+    background-color: #DDEB9D;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: #A0C878;
+    background-color: #FAF6E9;
+    outline: none;
+  }
+  
+  button[type="submit"] {
+    background-color: #A0C878;
     color: white;
-    font-size: 1.2em;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
-}
-
-/* Hover effect for links */
-nav .nav-links a:hover {
-    background-color: #555; /* Lighter shade on hover */
-    border-radius: 5px;
-}
-
-/* Responsive design: Stack links vertically on smaller screens */
-@media (max-width: 768px) {
-    nav .nav-links {
-        flex-direction: column;
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    nav .nav-links li {
-        margin: 10px 0;
-    }
-}
+    border: 2px solid #A0C878;
+    border-radius: 40px;
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
